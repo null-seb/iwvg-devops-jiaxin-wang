@@ -1,7 +1,8 @@
 ## [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
 ## Ingeniería Web: Visión General (IWVG) DevOps
 > Este proyecto es una Plantilla de apoyo docente de la asignatura.
-
+## Code status
+[![Build Status](https://travis-ci.org/null-seb/iwvg-devops-jiaxin-wang.svg?branch=develop)](https://travis-ci.org/null-seb/iwvg-devops-jiaxin-wang)
 ### :gear: Instalación del proyecto
 1. Clonar el repositorio en tu equipo, **mediante consola**:
 ```sh
