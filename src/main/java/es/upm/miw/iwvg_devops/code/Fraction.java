@@ -26,9 +26,8 @@ package es.upm.miw.iwvg_devops.code;
  */
 public class Fraction {
 
-    private int numerator;//分子
-
-    private int denominator;//分母
+    private static int denominator;
+    private static int numerator;//分子
 
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
@@ -43,16 +42,16 @@ public class Fraction {
         return numerator;
     }
 
-    public void setNumerator(int numerator) {
-        this.numerator = numerator;
+    public static void setNumerator(int numerator) {
+        numerator = numerator;
     }
 
     public int getDenominator() {
         return denominator;
     }
 
-    public void setDenominator(int denominator) {
-        this.denominator = denominator;
+    public static void setDenominator(int denominator) {
+        denominator = denominator;
     }
 
     public double decimal() {
@@ -85,26 +84,44 @@ public class Fraction {
 
     }
 
-    public Fraction add(Fraction summand){
-        if (this.denominator%summand.getDenominator()==0) {
-            summand.setNumerator(summand.getNumerator() * (this.denominator / summand.getDenominator()));
-            summand.setDenominator(this.denominator);
-        }else if(summand.getDenominator()%this.denominator==0){
-            this.setNumerator(summand.numerator * (summand.getDenominator() / this.denominator));
-            this.setDenominator(summand.denominator);
+    public static Fraction add(Fraction summand){
+        if (denominator%summand.getDenominator()==0) {
+            summand.setNumerator(summand.getNumerator() * (denominator / summand.getDenominator()));
+            summand.setDenominator(denominator);
+        }else if(summand.getDenominator()%denominator==0){
+            setNumerator(summand.numerator * (summand.getDenominator() / denominator));
+            setDenominator(summand.denominator);
         }
         else{
-            int tmp = this.denominator;
+            int tmp = denominator;
 
-            this.setDenominator(this.denominator * summand.getDenominator());
-            this.setNumerator(this.numerator * summand.getDenominator());
+            setDenominator(denominator * summand.getDenominator());
+            setNumerator(numerator * summand.getDenominator());
 
             summand.setDenominator(tmp * summand.getDenominator());
             summand.setNumerator(tmp * summand.getNumerator());
         }
-        return new Fraction(this.numerator + summand.getNumerator(), this.denominator);
+        return new Fraction(numerator + summand.getNumerator(), denominator);
     }
+    public static Fraction subtraction(Fraction subtrahend){
+        if (denominator%subtrahend.getDenominator()==0) {
+            subtrahend.setNumerator(subtrahend.getNumerator() * (denominator / subtrahend.getDenominator()));
+            subtrahend.setDenominator(denominator);
+        }else if(subtrahend.getDenominator()%denominator==0){
+            setNumerator(subtrahend.numerator * (subtrahend.getDenominator() / denominator));
+            setDenominator(subtrahend.denominator);
+        }
+        else{
+            int tmp = denominator;
 
+            setDenominator(denominator * subtrahend.getDenominator());
+            setNumerator(numerator * subtrahend.getDenominator());
+
+            subtrahend.setDenominator(tmp * subtrahend.getDenominator());
+            subtrahend.setNumerator(tmp * subtrahend.getNumerator());
+        }
+        return new Fraction(numerator - subtrahend.getNumerator(), denominator);
+    }
     public Fraction multiply(Fraction multiplier){
         Fraction temp=new Fraction((this.numerator*multiplier.numerator),(this.denominator*multiplier.denominator));
         return temp;
