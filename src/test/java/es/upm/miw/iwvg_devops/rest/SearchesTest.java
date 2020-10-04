@@ -37,5 +37,8 @@ class SearchesTest {
         assertEquals(List.of(),new Searches().findFractionAdditionByUserId("1")
                 .toString());
     }
-
+    @Test
+    void testFindFirstFractionSubtractionByUserName(){
+        assertEquals(List.of(),new Searches().findFirstFractionSubtractionByUserName("Ana"));
+    }
 }
