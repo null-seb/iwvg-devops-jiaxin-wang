@@ -79,22 +79,22 @@ public class Searches {
     public Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
         return Stream.empty();
     }
-        //通过用户名查小数
-    public Stream<Double> findDecimalFractionByUserName(String name) {
-        return Stream.empty();
+        //通过负分数查找小数
+    public Stream<Double> findDecimalFractionByNegativeSignFraction(int negativeSignFraction) {
+        String string=String.valueOf(negativeSignFraction);
+        return (Stream<Double>) new UsersDatabase().findAll()
+                .filter(user -> string.equals(user.getFractions().toString()))
+                .flatMap(user -> user.getFractions().stream())
+                .map(Fraction::decimal);
     }
-
-    public Stream<Double> findDecimalFractionByNegativeSignFraction() {
-        return Stream.empty();
-    }
-    //通过用户ID查找分数加法
+        //通过用户ID查找分数加法
     public Fraction findFractionAdditionByUserId(String id) {
         return (Fraction) new UsersDatabase().findAll()
                 .filter(user -> id.equals(user.getId()))
                 .flatMap(user -> user.getFractions().stream())
                 .map(Fraction::add);
     }
-    //通过用户名查找第一次分数减法
+        //通过用户名查找第一次分数减法
     public Optional<Fraction> findFirstFractionSubtractionByUserName(String name) {
         return new UsersDatabase().findAll()
                 .filter(user -> name.equals(user.getName()))
