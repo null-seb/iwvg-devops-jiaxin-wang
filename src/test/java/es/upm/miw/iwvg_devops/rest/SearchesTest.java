@@ -41,4 +41,9 @@ class SearchesTest {
     void testFindFirstFractionSubtractionByUserName(){
         assertEquals(List.of(),new Searches().findFirstFractionSubtractionByUserName("Ana"));
     }
+    @Test
+    void testFindDecimalFractionByNegativeSignFraction(){
+        assertEquals(List.of(1),new Searches().findDecimalFractionByNegativeSignFraction(1)
+                .collect(Collectors.toList()));
+    }
 }
