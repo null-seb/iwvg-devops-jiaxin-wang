@@ -27,7 +27,7 @@ package es.upm.miw.iwvg_devops.code;
 public class Fraction {
 
     private static int denominator;
-    private static int numerator;//分子
+    private static int numerator;
 
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
@@ -94,10 +94,8 @@ public class Fraction {
         }
         else{
             int tmp = denominator;
-
             setDenominator(denominator * summand.getDenominator());
             setNumerator(numerator * summand.getDenominator());
-
             summand.setDenominator(tmp * summand.getDenominator());
             summand.setNumerator(tmp * summand.getNumerator());
         }
@@ -113,10 +111,8 @@ public class Fraction {
         }
         else{
             int tmp = denominator;
-
             setDenominator(denominator * subtrahend.getDenominator());
             setNumerator(numerator * subtrahend.getDenominator());
-
             subtrahend.setDenominator(tmp * subtrahend.getDenominator());
             subtrahend.setNumerator(tmp * subtrahend.getNumerator());
         }

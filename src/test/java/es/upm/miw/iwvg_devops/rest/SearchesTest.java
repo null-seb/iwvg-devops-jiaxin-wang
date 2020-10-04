@@ -29,17 +29,17 @@ class SearchesTest {
     }
     @Test
     void testFindUserIdBySomeProperFraction(){
-        assertEquals(List.of(true),new Searches().findUserIdBySomeProperFraction(true)
+        assertEquals(List.of("1","2"),new Searches().findUserIdBySomeProperFraction(true)
         .collect(Collectors.toList()));
     }
     @Test
     void testFindFractionAdditionByUserId(){
-        assertEquals(List.of(),new Searches().findFractionAdditionByUserId("1")
+        assertEquals(List.of(1),new Searches().findFractionAdditionByUserId("1")
                 .toString());
     }
     @Test
     void testFindFirstFractionSubtractionByUserName(){
-        assertEquals(List.of(),new Searches().findFirstFractionSubtractionByUserName("Ana"));
+        assertEquals(List.of(1),new Searches().findFirstFractionSubtractionByUserName("Ana"));
     }
     @Test
     void testFindDecimalFractionByNegativeSignFraction(){

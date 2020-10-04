@@ -30,10 +30,7 @@ public class Searches {
                 .map(User::getFamilyName);
     }
         //通过真分数查找用户姓首字母
-    public Stream<String> findUserFamilyNameInitialBySomeProperFraction(int anyProperFraction) {
-
-        return Stream.empty();
-    }
+    public Stream<String> findUserFamilyNameInitialBySomeProperFraction(int anyProperFraction) { return Stream.empty(); }
         //通过任意真分数查找用户ID
     public Stream<String> findUserIdBySomeProperFraction(boolean fractionProper) {
             return new UsersDatabase().findAll()
@@ -87,6 +84,7 @@ public class Searches {
                 .flatMap(user -> user.getFractions().stream())
                 .map(Fraction::decimal);
     }
+
         //通过用户ID查找分数加法
     public Fraction findFractionAdditionByUserId(String id) {
         return (Fraction) new UsersDatabase().findAll()
@@ -94,6 +92,7 @@ public class Searches {
                 .flatMap(user -> user.getFractions().stream())
                 .map(Fraction::add);
     }
+
         //通过用户名查找第一次分数减法
     public Optional<Fraction> findFirstFractionSubtractionByUserName(String name) {
         return new UsersDatabase().findAll()
