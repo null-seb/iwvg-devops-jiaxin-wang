@@ -95,8 +95,12 @@ public class Searches {
                 .map(Fraction::add);
     }
     //通过用户名查找第一次分数减法
-    public Fraction findFirstFractionSubtractionByUserName(String name) {
-        return null;
+    public Optional<Fraction> findFirstFractionSubtractionByUserName(String name) {
+        return new UsersDatabase().findAll()
+                .filter(user -> name.equals(user.getName()))
+                .flatMap(user -> user.getFractions().stream())
+                .map(Fraction::subtraction)
+                .findFirst();
     }
 
 }
