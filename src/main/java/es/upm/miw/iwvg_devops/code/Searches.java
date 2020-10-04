@@ -89,7 +89,10 @@ public class Searches {
     }
     //通过用户ID查找分数加法
     public Fraction findFractionAdditionByUserId(String id) {
-        return null;
+        return (Fraction) new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .flatMap(user -> user.getFractions().stream())
+                .map(Fraction::add);
     }
     //通过用户名查找第一次分数减法
     public Fraction findFirstFractionSubtractionByUserName(String name) {
